@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,10 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.MyClass;
+import pinch.androidjokelibrary.DisplayJokeActivity;
+import pinch.androidjokelibrary.DisplayJokeFragment;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements EndpointsAsyncTaskListener {
+
+    //Joker myJoker = new Joker();
+    String jokeToTell;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +47,20 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+        EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask(this);
+        endpointsAsyncTask.execute();
+        //
+        // This was used in initial testing
+        //Toast.makeText(this, myJoker.getJoke(), Toast.LENGTH_SHORT).show();
+        //
     }
 
+    @Override
+    public void onResult(Object o) {
+        jokeToTell = (String)o;
+        Intent intent = new Intent(this, DisplayJokeActivity.class);
+        intent.putExtra(DisplayJokeFragment.KEY_JOKE, jokeToTell);
+        startActivity(intent);
+    }
 
 }
