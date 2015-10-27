@@ -14,7 +14,6 @@ import pinch.androidjokelibrary.DisplayJokeFragment;
 
 public class MainActivity extends ActionBarActivity implements EndpointsAsyncTaskListener {
 
-    //Joker myJoker = new Joker();
     String jokeToTell;
 
     @Override

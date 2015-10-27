@@ -5,7 +5,8 @@ import java.util.Random;
 public class Joker {
 
     public static String getJoke() {
-        return randomJoke();
+        //return randomJoke();
+        return null;
     }
 
     private static String randomJoke() {
