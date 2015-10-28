@@ -46,8 +46,7 @@ public class MainActivity extends ActionBarActivity implements EndpointsAsyncTas
     }
 
     public void tellJoke(View view){
-        EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask(this);
-        endpointsAsyncTask.execute();
+        new EndpointsAsyncTask(this).execute();
         //
         // This was used in initial testing
         //Toast.makeText(this, myJoker.getJoke(), Toast.LENGTH_SHORT).show();

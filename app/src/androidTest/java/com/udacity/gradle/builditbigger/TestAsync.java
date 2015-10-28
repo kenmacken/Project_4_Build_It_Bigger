@@ -25,6 +25,7 @@ public class TestAsync extends AndroidTestCase implements EndpointsAsyncTaskList
     @Override
     public void onResult(Object o) {
         assertTrue(o.toString() != null);
+        assertTrue(!o.toString().isEmpty());
         signal.countDown();
     }
 }
